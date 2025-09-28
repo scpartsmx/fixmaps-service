@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -13,14 +12,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthProvider";
 
 const loginSchema = z.object({
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  email: z.string().email("Correo electrónico inválido"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 });
 
 const signupSchema = z.object({
-  nome: z.string().min(2, "Informe seu nome"),
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  nome: z.string().min(2, "Ingresa tu nombre"),
+  email: z.string().email("Correo electrónico inválido"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 });
 
 type LoginValues = z.infer<typeof loginSchema>;
@@ -56,11 +55,11 @@ const AuthPage: React.FC = () => {
 
     if (error) {
       console.error("[Auth] login error", error);
-      toast({ title: "Falha no login", description: error.message });
+      toast({ title: "Error al iniciar sesión", description: error.message });
       return;
     }
 
-    toast({ title: "Bem-vindo!", description: "Login realizado com sucesso." });
+    toast({ title: "¡Bienvenido!", description: "Sesión iniciada exitosamente." });
     navigate("/", { replace: true });
   };
 
@@ -79,14 +78,14 @@ const AuthPage: React.FC = () => {
 
     if (error) {
       console.error("[Auth] signup error", error);
-      toast({ title: "Falha no cadastro", description: error.message });
+      toast({ title: "Error en el registro", description: error.message });
       return;
     }
 
     toast({
-      title: "Cadastro realizado!",
+      title: "¡Registro completado!",
       description:
-        "Verifique seu e-mail para confirmar a conta (se necessário) e então faça login.",
+        "Verifica tu correo electrónico para confirmar la cuenta (si es necesario) y luego inicia sesión.",
     });
   };
 
@@ -95,13 +94,13 @@ const AuthPage: React.FC = () => {
       <div className="w-full max-w-md rounded-xl border border-border/60 bg-background/80 p-6 shadow-lg backdrop-blur">
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold tracking-tight">Service PRO</h1>
-          <p className="text-sm text-muted-foreground mt-1">Acesse sua conta ou crie uma nova</p>
+          <p className="text-sm text-muted-foreground mt-1">Accede a tu cuenta o crea una nueva</p>
         </div>
 
         <Tabs defaultValue="login" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Entrar</TabsTrigger>
-            <TabsTrigger value="signup">Cadastrar</TabsTrigger>
+            <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
+            <TabsTrigger value="signup">Registrarse</TabsTrigger>
           </TabsList>
 
           <TabsContent value="login" className="mt-4">
@@ -112,9 +111,9 @@ const AuthPage: React.FC = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>E-mail</FormLabel>
+                      <FormLabel>Correo Electrónico</FormLabel>
                       <FormControl>
-                        <Input placeholder="voce@empresa.com" type="email" autoComplete="email" {...field} />
+                        <Input placeholder="tu@empresa.com" type="email" autoComplete="email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -125,7 +124,7 @@ const AuthPage: React.FC = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Senha</FormLabel>
+                      <FormLabel>Contraseña</FormLabel>
                       <FormControl>
                         <Input placeholder="••••••••" type="password" autoComplete="current-password" {...field} />
                       </FormControl>
@@ -133,7 +132,7 @@ const AuthPage: React.FC = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">Entrar</Button>
+                <Button type="submit" className="w-full">Iniciar Sesión</Button>
               </form>
             </Form>
           </TabsContent>
@@ -146,9 +145,9 @@ const AuthPage: React.FC = () => {
                   name="nome"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome</FormLabel>
+                      <FormLabel>Nombre</FormLabel>
                       <FormControl>
-                        <Input placeholder="Seu nome" autoComplete="name" {...field} />
+                        <Input placeholder="Tu nombre" autoComplete="name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -159,9 +158,9 @@ const AuthPage: React.FC = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>E-mail</FormLabel>
+                      <FormLabel>Correo Electrónico</FormLabel>
                       <FormControl>
-                        <Input placeholder="voce@empresa.com" type="email" autoComplete="email" {...field} />
+                        <Input placeholder="tu@empresa.com" type="email" autoComplete="email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -172,15 +171,15 @@ const AuthPage: React.FC = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Senha</FormLabel>
+                      <FormLabel>Contraseña</FormLabel>
                       <FormControl>
-                        <Input placeholder="Crie uma senha" type="password" autoComplete="new-password" {...field} />
+                        <Input placeholder="Crea una contraseña" type="password" autoComplete="new-password" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">Criar conta</Button>
+                <Button type="submit" className="w-full">Crear Cuenta</Button>
               </form>
             </Form>
           </TabsContent>
