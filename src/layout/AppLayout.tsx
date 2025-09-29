@@ -35,15 +35,15 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/auth/AuthProvider";
 
 const items = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Ordens", url: "/ordens", icon: FileText },
-  { title: "Nova OS", url: "/ordens/nova", icon: FilePlus2 },
+  { title: "Panel de Control", url: "/", icon: LayoutDashboard },
+  { title: "Órdenes", url: "/ordens", icon: FileText },
+  { title: "Nueva OS", url: "/ordens/nova", icon: FilePlus2 },
   { title: "Clientes", url: "/clientes", icon: Users },
   { title: "Técnicos", url: "/tecnicos", icon: Wrench },
-  { title: "Tipos de Serviço", url: "/tipos-servico", icon: Settings },
-  { title: "Calendário", url: "/calendario", icon: Calendar },
-  { title: "Financeiro", url: "/financeiro", icon: DollarSign },
-  { title: "Relatórios", url: "/relatorios", icon: BarChart3 },
+  { title: "Tipos de Servicio", url: "/tipos-servico", icon: Settings },
+  { title: "Calendario", url: "/calendario", icon: Calendar },
+  { title: "Financiero", url: "/financeiro", icon: DollarSign },
+  { title: "Reportes", url: "/relatorios", icon: BarChart3 },
 ];
 
 function AppSidebar() {
@@ -96,7 +96,7 @@ function AppSidebar() {
           asChild
           isActive={isActive("/configuracoes")}
           className="rounded-lg hover:bg-accent/50 data-[active=true]:bg-primary data-[active=true]:text-primary-foreground group-data-[collapsible=icon]:justify-center"
-          tooltip="Configurações"
+          tooltip="Configuración"
         >
           <NavLink
             to="/configuracoes"
@@ -104,7 +104,7 @@ function AppSidebar() {
           >
             <Settings className="h-4 w-4" />
             <span className="text-sm group-data-[collapsible=icon]:hidden">
-              Configurações
+              Configuración
             </span>
           </NavLink>
         </SidebarMenuButton>
@@ -151,12 +151,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 {user ? (
                   <>
                     <LogOut className="h-4 w-4" />
-                    <span>Sair</span>
+                    <span>Salir</span>
                   </>
                 ) : (
                   <>
                     <LogIn className="h-4 w-4" />
-                    <span>Entrar</span>
+                    <span>Iniciar Sesión</span>
                   </>
                 )}
               </Button>
