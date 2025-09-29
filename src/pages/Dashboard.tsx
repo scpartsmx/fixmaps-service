@@ -69,21 +69,21 @@ export default function Dashboard() {
       textColor: "text-white",
     },
     {
-      title: "Abertas",
+      title: "Abiertas",
       value: abertas.toString(),
       icon: Users,
       color: "bg-gradient-to-br from-yellow-500 to-orange-500",
       textColor: "text-white",
     },
     {
-      title: "Em Andamento",
+      title: "En Proceso",
       value: andamento.toString(),
       icon: Wrench,
       color: "bg-gradient-to-br from-green-500 to-emerald-500",
       textColor: "text-white",
     },
     {
-      title: "Concluídas",
+      title: "Concluidas",
       value: concluidas.toString(),
       icon: CheckCircle,
       color: "bg-gradient-to-br from-red-500 to-pink-500",
@@ -94,10 +94,10 @@ export default function Dashboard() {
   return (
     <div>
       <SEO
-        title="Service PRO — Dashboard"
-        description="Visão geral das ordens de serviço"
+        title="Service PRO — Panel de Control"
+        description="Resumen general de las órdenes de servicio"
       />
-      <h1 className="text-2xl font-semibold mb-4">Dashboard — Service PRO</h1>
+      <h1 className="text-2xl font-semibold mb-4">Panel de Control — Service PRO</h1>
 
       <div className="grid gap-4 md:grid-cols-4">
         {stats.map((stat, index) => (
@@ -129,7 +129,7 @@ export default function Dashboard() {
       <div className="grid gap-4 md:grid-cols-2 mt-4">
         <Card>
           <CardHeader>
-            <CardTitle>Ordens de Serviço - Últimos 30 Dias</CardTitle>
+            <CardTitle>Órdenes de Servicio - Últimos 30 Días</CardTitle>
           </CardHeader>
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -142,10 +142,10 @@ export default function Dashboard() {
                   tick={{ fontSize: 11 }}
                 />
                 <Tooltip
-                  formatter={(value, name) => [value, "Ordens de Serviço"]}
+                  formatter={(value, name) => [value, "Órdenes de Servicio"]}
                   labelFormatter={(label) => {
                     const item = byDay.find((d) => d.day === label);
-                    return item ? `Data: ${label}` : label;
+                    return item ? `Fecha: ${label}` : label;
                   }}
                   contentStyle={{
                     backgroundColor: "hsl(var(--background))",
@@ -156,7 +156,7 @@ export default function Dashboard() {
                 <Line
                   type="monotone"
                   dataKey="count"
-                  name="Quantidade"
+                  name="Cantidad"
                   stroke="hsl(var(--primary))"
                   strokeWidth={3}
                   dot={{ fill: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
@@ -172,11 +172,11 @@ export default function Dashboard() {
           <div className="px-6 pb-6">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="bg-muted/50 rounded-lg p-3">
-                <div className="text-muted-foreground">Média Diária</div>
-                <div className="text-lg font-semibold">{avgPerDay} OS/dia</div>
+                <div className="text-muted-foreground">Promedio Diario</div>
+                <div className="text-lg font-semibold">{avgPerDay} OS/día</div>
               </div>
               <div className="bg-muted/50 rounded-lg p-3">
-                <div className="text-muted-foreground">Total (30 dias)</div>
+                <div className="text-muted-foreground">Total (30 días)</div>
                 <div className="text-lg font-semibold">{totalLast30Days} OS</div>
               </div>
               <div className="bg-muted/50 rounded-lg p-3">
@@ -184,7 +184,7 @@ export default function Dashboard() {
                 <div className="text-lg font-semibold">{maxDay.count} OS ({maxDay.day})</div>
               </div>
               <div className="bg-muted/50 rounded-lg p-3">
-                <div className="text-muted-foreground">Tendência (7 dias)</div>
+                <div className="text-muted-foreground">Tendencia (7 días)</div>
                 <div className={`text-lg font-semibold ${parseFloat(growthRate) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                   {parseFloat(growthRate) >= 0 ? '+' : ''}{growthRate}%
                 </div>
@@ -194,7 +194,7 @@ export default function Dashboard() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Últimas Ordens</CardTitle>
+            <CardTitle>Últimas Órdenes</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
