@@ -9,7 +9,16 @@ export const StatusBadge = ({ status }: { status: Status }) => {
     Concluída: "bg-green-500/15 text-green-700 dark:text-green-300",
     Cancelada: "bg-destructive/15 text-destructive",
   };
-  return <Badge className={map[status]}>{status}</Badge>;
+  
+  const displayMap: Record<Status, string> = {
+    Aberta: "Abierta",
+    "Em Andamento": "En Proceso",
+    "Aguardando Peças": "Esperando Piezas",
+    Concluída: "Concluida",
+    Cancelada: "Cancelada",
+  };
+  
+  return <Badge className={map[status]}>{displayMap[status]}</Badge>;
 };
 
 export const PriorityBadge = ({ prioridade }: { prioridade: Priority }) => {
@@ -19,5 +28,13 @@ export const PriorityBadge = ({ prioridade }: { prioridade: Priority }) => {
     Alta: "bg-orange-500/15 text-orange-700 dark:text-orange-300",
     Urgente: "bg-red-500/15 text-red-700 dark:text-red-300",
   };
-  return <Badge className={map[prioridade]}>{prioridade}</Badge>;
+  
+  const displayMap: Record<Priority, string> = {
+    Baixa: "Baja",
+    Média: "Media",
+    Alta: "Alta",
+    Urgente: "Urgente",
+  };
+  
+  return <Badge className={map[prioridade]}>{displayMap[prioridade]}</Badge>;
 };
