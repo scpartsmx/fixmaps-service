@@ -84,21 +84,21 @@ export default function Clients() {
       textColor: "text-white",
     },
     {
-      title: "Clientes Ativos",
+      title: "Clientes Activos",
       value: activeClients.toString(),
       icon: UserCheck,
       color: "bg-gradient-to-br from-green-500 to-emerald-500",
       textColor: "text-white",
     },
     {
-      title: "Novos este Mês",
+      title: "Nuevos este Mes",
       value: newClientsThisMonth.toString(),
       icon: UserPlus,
       color: "bg-gradient-to-br from-yellow-500 to-orange-500",
       textColor: "text-white",
     },
     {
-      title: "Clientes Recorrentes",
+      title: "Clientes Recurrentes",
       value: clientsWithMultipleOrders.toString(),
       icon: Calendar,
       color: "bg-gradient-to-br from-purple-500 to-pink-500",
@@ -110,13 +110,13 @@ export default function Clients() {
     try {
       await deleteClient(client.id);
       toast({
-        title: "Cliente excluído",
-        description: `${client.nome} foi excluído com sucesso.`,
+        title: "Cliente eliminado",
+        description: `${client.nome} fue eliminado exitosamente.`,
       });
     } catch (error) {
       toast({
-        title: "Erro",
-        description: "Não foi possível excluir o cliente.",
+        title: "Error",
+        description: "No fue posible eliminar el cliente.",
         variant: "destructive",
       });
     }
@@ -129,19 +129,19 @@ export default function Clients() {
 
   return (
     <div>
-      <SEO title="Service PRO — Clientes" description="Gestão de clientes" />
+      <SEO title="Service PRO — Clientes" description="Gestión de clientes" />
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold">Clientes</h1>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
             <Button className="gap-2">
               <Plus className="h-4 w-4" />
-              Novo Cliente
+              Nuevo Cliente
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Cadastrar Novo Cliente</DialogTitle>
+              <DialogTitle>Registrar Nuevo Cliente</DialogTitle>
             </DialogHeader>
             <ClientForm onSuccess={() => setDialogOpen(false)} />
           </DialogContent>
@@ -192,25 +192,25 @@ export default function Clients() {
                 <Plus className="h-12 w-12 text-muted-foreground mb-4" />
                 <h3 className="text-lg font-semibold mb-2">
                   {clients.length === 0
-                    ? "Nenhum cliente cadastrado"
-                    : "Nenhum cliente encontrado"}
+                    ? "Ningún cliente registrado"
+                    : "Ningún cliente encontrado"}
                 </h3>
                 <p className="text-muted-foreground mb-4">
                   {clients.length === 0
-                    ? "Comece adicionando seus primeiros clientes para gerenciar ordens de serviço."
-                    : "Tente ajustar os termos da busca ou limpar o filtro."}
+                    ? "Comienza agregando tus primeros clientes para gestionar órdenes de servicio."
+                    : "Intenta ajustar los términos de búsqueda o limpia el filtro."}
                 </p>
                 {clients.length === 0 && (
                   <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                     <DialogTrigger asChild>
                       <Button className="gap-2">
                         <Plus className="h-4 w-4" />
-                        Adicionar Primeiro Cliente
+                        Agregar Primer Cliente
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Cadastrar Novo Cliente</DialogTitle>
+                        <DialogTitle>Registrar Nuevo Cliente</DialogTitle>
                       </DialogHeader>
                       <ClientForm onSuccess={() => setDialogOpen(false)} />
                     </DialogContent>
@@ -247,11 +247,11 @@ export default function Clients() {
                       <AlertDialogContent>
                         <AlertDialogHeader>
                           <AlertDialogTitle>
-                            Confirmar exclusão
+                            Confirmar eliminación
                           </AlertDialogTitle>
                           <AlertDialogDescription>
-                            Tem certeza que deseja excluir o cliente "{c.nome}"?
-                            Esta ação não pode ser desfeita.
+                            ¿Estás seguro de que deseas eliminar el cliente "{c.nome}"?
+                            Esta acción no se puede deshacer.
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
@@ -260,7 +260,7 @@ export default function Clients() {
                             onClick={() => handleDelete(c)}
                             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                           >
-                            Excluir
+                            Eliminar
                           </AlertDialogAction>
                         </AlertDialogFooter>
                       </AlertDialogContent>
@@ -272,7 +272,7 @@ export default function Clients() {
                 <div className="text-sm text-muted-foreground">
                   {c.email} • {c.telefone}
                 </div>
-                <div className="mt-2 text-sm">Endereço: {c.endereco}</div>
+                <div className="mt-2 text-sm">Dirección: {c.endereco}</div>
                 <div className="mt-2 text-sm font-medium">
                   OS: {workOrders.filter((o) => o.clienteId === c.id).length}
                 </div>
